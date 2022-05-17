@@ -1,0 +1,22 @@
+.card {
+  width: 150px;
+  cursor: zoom-in;
+}
+
+.container {
+  align-items: flex-start;
+  justify-content: start;
+  display: block;
+}
+
+.search-area {
+  display: flex;
+}
+
+.search-item {
+  margin-right: 20px;
+}
+
+.input-item {
+  height: 15px;
+}

@@ -1,0 +1,45 @@
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as theme;
+@include mat.core();
+
+// プライマリーカラーパレット
+$primary-palette: (
+  default: #5e35b1,
+  lighter: #b39ddb,
+  darker: #311b92,
+    contrast: (
+      default: theme.$dark-primary-text,
+      lighter: theme.$dark-primary-text,
+      darker: theme.$dark-primary-text
+    )
+  );
+// アクセントカラーパレット
+$accent-palette: (
+  default: #37cabb,
+  lighter: #75feed,
+  darker: #00988b,
+    contrast: (
+      default: theme.$dark-primary-text,
+      lighter: theme.$dark-primary-text,
+      darker: theme.$light-primary-text,
+    )
+  );
+
+// プライマリーカラーのマップを作成
+$sscs-primary: mat.define-palette($primary-palette, default, lighter, darker);
+// アクセントカラーパレットのマップを作成
+$sscs-accent: mat.define-palette($accent-palette, default, lighter, darker);
+// 警告カラーパレット（※デフォルトのままredパレットを使用）
+$sscs-warn: mat.define-palette(mat.$red-palette);
+
+// lightモード 又は darkモードのテーマに設定する
+// ここではlightモードを使用する
+$sscs-theme: mat.define-light-theme((
+  color: (
+    primary: $sscs-primary,
+    accent: $sscs-accent,
+    warn: $sscs-warn,
+  )
+));
+
+@include mat.all-component-themes($sscs-theme);

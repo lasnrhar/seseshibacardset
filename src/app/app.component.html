@@ -1,0 +1,38 @@
+<div fxLayout="column" class="search-area">
+  <div class="search-item">
+    <mat-form-field appearance="fill">
+      <mat-label>Card Type</mat-label>
+      <mat-select
+        [(value)]="type"
+        (selectionChange)="search()"
+        class="input-item"
+      >
+        <mat-option value="all">全部</mat-option>
+        <mat-option value="magic">魔法卡</mat-option>
+        <mat-option value="trap">陷阱卡</mat-option>
+        <mat-option value="monster">怪兽卡</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="search-item">
+    <mat-form-field appearance="fill">
+      <mat-label>Card Title</mat-label>
+      <input
+        matInput
+        [(ngModel)]="title"
+        (change)="search()"
+        class="input-item"
+      />
+    </mat-form-field>
+  </div>
+</div>
+
+<div fxLayout="column" class="container">
+  <img
+    *ngFor="let c of searchedCards"
+    class="card"
+    [src]="c.url"
+    (click)="openLink(c)"
+    [title]="c.title"
+  />
+</div>
